@@ -1,0 +1,16 @@
+#WaitingPanel {
+	min-height:593px;
+}
+
+
+#WaitingList {
+	margin-top:20px
+}
+
+#DeleteUser {
+	margin:2px 0 0 15px
+}
+
+#PriorityButtons {
+	margin:20px 180px;
+}

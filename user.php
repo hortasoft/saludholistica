@@ -63,18 +63,18 @@
               <div class="container-fluid">
                 <div class="row fieldrow">
                   <div class="col-sm-6">
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                       <label for="pac-name" class="control-label">Documento</label>
                       <input type="text" class="form-control" placeholder="" name="name" id="pac-name" ng-model="Iddocument">
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-7">
                       <div class="btn-group" style="margin-top:24px">
-                        <button type="button" class="btn btn-default">Tipo</button>
+                        <button type="button" class="btn btn-default" id="DocTypeBtn">Tipo</button>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                           <span class="caret"></span>
                           <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu DocType" id="DocTypeMenu" role="menu">
                           <li><a ng-click="Idtype = 1">Cedula de ciudadania</a></li>
                           <li><a ng-click="Idtype = 2">Tarjeta de indentidad</a></li>
                           <li><a ng-click="Idtype = 3">Cedula de extranjeria</a></li>                          
@@ -118,12 +118,12 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="btn-group" style="margin-top:24px">
-                        <button type="button" class="btn btn-default">Sexo</button>
+                        <button type="button" class="btn btn-default" id="GenreBtn">Sexo</button>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                           <span class="caret"></span>
                           <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu Genre" role="menu">
                           <li><a ng-click="gender = 0">Masculino</a></li>
                           <li><a ng-click="gender = 1">Femenino</a></li>
                                                 
@@ -197,5 +197,6 @@
     <script src="js/angular.min.js"></script>
     <script src="js/general.js"></script>
     <script src="js/app/UserCtrl.js"></script>
+    <script src="js/user.js"></script>
   </body>
 </html>

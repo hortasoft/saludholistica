@@ -21,6 +21,7 @@ SHapp.controller('userCtrl', ['$http', '$scope', '$interval', '$q', function ($h
 	};
 	
 	$scope.saveData = function(){
+		if($scope.Iddocument != null && $scope.Iddocument != undefined && $scope.Idtype != null && $scope.Idtype != undefined && $scope.name != null && $scope.name != undefined && $scope.borndate != null && $scope.borndate != undefined && $scope.bornplace != null && $scope.bornplace != undefined{
 		$http.post('/saludholistica/datamethods/insertUser.php', {
 			Iddocument: $scope.Iddocument, 
 			Idtype: $scope.Idtype,
@@ -40,26 +41,36 @@ SHapp.controller('userCtrl', ['$http', '$scope', '$interval', '$q', function ($h
 			religion: $scope.religion,
 			reference: $scope.reference
 			}).success(function (data, status, headers, config) {
-            alert(data);
-        }).error(function (data, status, headers, config) {
-        });
+            
+			}).error(function (data, status, headers, config) {
+			});
+		}
+		else
+		{
+			if($scope.Iddocument == null || $scope.Iddocument == undefined){
+				$("#docinput").addclass("has-error");
+			}
+		}
 	}
 
 	$scope.$watch('bornday', function() {
         if($scope.bornday != null && $scope.bornday != undefined && $scope.bornmonth != null && $scope.bornmonth != undefined && $scope.bornyear!=null && $scope.bornyear != undefined){
           $scope.calcAge();
+          $scope.borndate = new Date($scope.bornyear, $scope.bornmonth, $scope.bornday);
         };
     });
 
     $scope.$watch('bornmonth', function() {
         if($scope.bornday != null && $scope.bornday != undefined && $scope.bornmonth != null && $scope.bornmonth != undefined && $scope.bornyear!=null && $scope.bornyear != undefined){
           $scope.calcAge();
+          $scope.borndate = new Date($scope.bornyear, $scope.bornmonth, $scope.bornday);
         };
     });
 
     $scope.$watch('bornyear', function() {
         if($scope.bornday != null && $scope.bornday != undefined && $scope.bornmonth != null && $scope.bornmonth != undefined && $scope.bornyear!=null && $scope.bornyear != undefined){
           $scope.calcAge();
+          $scope.borndate = new Date($scope.bornyear, $scope.bornmonth-1, $scope.bornday);
         };
     });
     

@@ -1,7 +1,11 @@
 .fieldrow {
-	margin-top:20px;
+	margin-top: 20px;
 }
 
 .personal {
-	min-height:593px;
+	min-height: 593px;
+}
+
+#SearchDoc {
+	margin: 24px 0 0 10px;
 }

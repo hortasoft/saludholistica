@@ -24,7 +24,10 @@
 	$reference=$request->reference;
 	$hoy = date("Y-m-d H:i:s");
 	//Insert query
-	$query = mysql_query("INSERT INTO personal_data
+	
+	$result = mysql_query("SELECT document FROM personal_data WHERE document = $Iddocument AND documentType = $Idtype", $connection);
+	if(mysql_num_rows($result)<0){	
+	$response = mysql_query("INSERT INTO personal_data
 	(document,
 	documentType,
 	name,
@@ -63,7 +66,12 @@
 	'$reference',
 	'$hoy')
 	");
+	}
+	else
+	{		
+	$response = false;
+	}
 	mysql_close($connection); // Connection Closed
 
-	echo $query;
+	echo $response;
 ?>

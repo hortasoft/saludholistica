@@ -66,12 +66,12 @@
 					<div class="container-fluid">
 						<div class="row fieldrow">
 							<div class="col-sm-6">
-								<div class="col-sm-5 form-group" id="docinput">
+								<div class="col-sm-4 form-group" id="docinput">
 									<label for="pac-name" class="control-label">Documento</label> <input
 										type="text" class="form-control" placeholder="" name="name"
 										id="pac-name" ng-model="Iddocument" required>
 								</div>
-								<div class="col-sm-7 form-group" id="doctypeinput">
+								<div class="col-sm-8 form-group" id="doctypeinput">
 									<div class="btn-group" style="margin-top: 24px">
 										<button type="button" class="btn btn-default" id="DocTypeBtn">Tipo</button>
 										<button type="button" class="btn btn-default dropdown-toggle"
@@ -85,7 +85,14 @@
 											<li><a ng-click="Idtype = 3">Cedula de extranjeria</a></li>
 										</ul>
 									</div>
+									<button type="button" class="btn btn-default" id="SearchDoc"
+										ng-click="SearchPatient()">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
 								</div>
+
+
+
 							</div>
 							<div class="col-sm-6 form-group" id="nameinput">
 								<label for="pac-name" class="control-label">Nombre</label> <input

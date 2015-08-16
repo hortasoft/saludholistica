@@ -64,6 +64,26 @@
 				<div class="panel-heading">DATOS PERSONALES</div>
 				<div class="panel-body">
 					<div class="container-fluid">
+						<div class="alert alert-danger alert-dismissible fade in" role="alert" id="UserNotFoundAlert">
+					      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+					      <strong>Paciente no registrado!</strong> Por favor ingrese todos los datos del paciente y haga click en guardar
+					    </div>
+					    <div class="alert alert-success alert-dismissible fade in" role="alert" id="UserRegisteredAlert">
+					      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+					      <strong>Paciente registrado exitosamente!</strong>
+					    </div>
+					    <div class="alert alert-success alert-dismissible fade in" role="alert" id="UserFoundAlert">
+					      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+					      <strong>Paciente encontrado!</strong>
+					    </div>
+					    <div class="alert alert-success alert-dismissible fade in" role="alert" id="UserUpdatedAlert">
+					      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+					      <strong>Los datos del paciente se actualizaron exitosamente!</strong>
+					    </div>
+					    <div class="alert alert-warning alert-dismissible fade in" role="alert" id="IncompleteAlert">
+					      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+					      <strong>Por favor rellenar todos los campos iluminados en rojo!</strong>
+					    </div>
 						<div class="row fieldrow">
 							<div class="col-sm-6">
 								<div class="col-sm-4 form-group" id="docinput">
@@ -73,7 +93,7 @@
 								</div>
 								<div class="col-sm-8 form-group" id="doctypeinput">
 									<div class="btn-group" style="margin-top: 24px">
-										<button type="button" class="btn btn-default" id="DocTypeBtn">Tipo</button>
+										<button type="button" class="btn btn-default" id="DocTypeBtn" required>Tipo</button>
 										<button type="button" class="btn btn-default dropdown-toggle"
 											data-toggle="dropdown" aria-expanded="false" required>
 											<span class="caret"></span> <span class="sr-only">Toggle
@@ -133,7 +153,7 @@
 								<div class="col-sm-6">
 									<label for="pac-civil" class="control-label">Estado civil</label>
 									<input type="text" class="form-control" placeholder=""
-										name="name" id="pac-civil" ng-model="civilstate">
+										name="name" id="pac-civil" ng-model="civilstate" required>
 								</div>
 								<div class="col-sm-6">
 									<div class="btn-group" style="margin-top: 24px">

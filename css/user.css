@@ -9,3 +9,20 @@
 #SearchDoc {
 	margin: 24px 0 0 10px;
 }
+
+#UserNotFoundAlert{
+	display:none;
+}
+#UserRegisteredAlert{
+	display:none;
+}
+#UserUpdatedAlert{
+	display:none;
+}
+#IncompleteAlert{
+	display:none;
+}
+
+#UserFoundAlert{
+	display:none;
+}

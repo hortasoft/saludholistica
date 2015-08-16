@@ -51,7 +51,7 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 									reference : $scope.reference
 								}).success(function(data, status,headers, config) {
 									if(data){
-										alert("Creacion exitosa");
+										$('#UserRegisteredAlert').show();
 									}else{
 										alert("El Paciente ya existe");
 									}
@@ -90,10 +90,32 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 				Iddocument : $scope.Iddocument,
 				Idtype : $scope.Idtype
 			}).success(function(data, status,headers, config) {
-				alert(data);
+				if(data == "false" || data == null || data == undefined){
+					$('#UserNotFoundAlert').show();
+				}else{
+				$scope.FillPatientData(data);
+				}
 			}).error(	function(data, status,headers, config) {
-				
+				alert("paila");
 			});
+		}
+		
+		$scope.FillPatientData = function(data) {
+			var BornDate = new Date(data[4]);			
+			$scope.name = data[3];
+			$scope.bornday = BornDate.getDate()+1;
+			$scope.bornmonth = BornDate.getMonth()+1;
+			$scope.bornyear = BornDate.getFullYear();
+			$scope.bornplace = data[5];
+			$scope.civilstate = data[6];
+			$scope.gender = data[7];
+			if($scope.gender == 0){
+				$("#GenreBtn").text("Masculino");
+			}
+			else 
+			{
+				$("#GenreBtn").text("Femenino");
+			}
 		}
 
 		$scope.$watch('bornday', function() {

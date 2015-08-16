@@ -26,7 +26,7 @@
 	//Insert query
 	
 	$result = mysql_query("SELECT document FROM personal_data WHERE document = $Iddocument AND documentType = $Idtype", $connection);
-	if(mysql_num_rows($result)<0){	
+	if(mysql_num_rows($result)==0){	
 	$response = mysql_query("INSERT INTO personal_data
 	(document,
 	documentType,

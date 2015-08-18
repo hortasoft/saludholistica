@@ -129,7 +129,7 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 				$scope.DisableFields();
 				}
 			}).error(	function(data, status,headers, config) {
-				alert("paila");
+				
 			});
 		}
 		
@@ -177,6 +177,17 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 			$('#GenreDD').attr('disabled', true);
 			$('#Savebtn').css('display', 'none');
 			$('#Updatebtn').css('display', 'block');
+		}
+		
+		$scope.AddHC = function(){
+			$http.post('/saludholistica/datamethods/AddHC.php',{
+				Iddocument : $scope.Iddocument,
+				Idtype : $scope.Idtype
+			}).success(function(data, status,headers, config) {
+				window.location.replace("http://localhost/saludholistica/HClinicaGeneral.php?id=" +  $scope.Iddocument +"&type="+$scope.Idtype+"&HCId="+data);
+			}).error(	function(data, status,headers, config) {
+				
+			});
 		}
 		
 		$scope.$watch('bornday', function() {

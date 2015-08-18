@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Agenda general - Salud Holistica</title>
+<title>Informacion Paciente - Salud Holistica</title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                   <li><a href="#">One more separated link</a></li> -->
 						</ul></li>
 					<li class="active"><a href="user.php">Historia Clinica</a></li>
-					<li><a href="#">Link</a></li>
+					
 
 				</ul>
 
@@ -273,7 +273,7 @@
 							<div class="col-sm-3 col-sm-offset-2">
 								<button type="button" class="btn btn-primary"
 									style="margin-top: 24px;" 
-									ng-click="saveData()">Agregar Caso</button>
+									ng-click="AddHC()">Agregar Caso</button>
 							</div>
 							<div class="col-sm-3 col-sm-offset-3" >
 								<button type="button" class="btn btn-success"

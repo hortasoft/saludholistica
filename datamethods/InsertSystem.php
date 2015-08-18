@@ -11,10 +11,10 @@ $hoy = date("Y-m-d H:i:s");
 $HCId = $request->HCId;
 $status = 0;
 
-$result = mysql_query("SELECT * FROM motive_table WHERE HCId = '$HCId' AND status=$status", $connection);
+$result = mysql_query("SELECT * FROM systems_table WHERE HCId = '$HCId' AND status=$status", $connection);
 
 if(!$result || mysql_num_rows($result)==0){
-	$response = mysql_query("INSERT INTO motive_table
+	$response = mysql_query("INSERT INTO systems_table
 			(HCId,
 			date,
 			status)
@@ -23,8 +23,8 @@ if(!$result || mysql_num_rows($result)==0){
 			'$hoy',
 			'$status')"
 	);
-	
-	$result = mysql_query("SELECT * FROM motive_table WHERE HCId = '$HCId' AND status=$status", $connection);
+
+	$result = mysql_query("SELECT * FROM systems_table WHERE HCId = '$HCId' AND status=$status", $connection);
 }
 
 $row = mysql_fetch_row($result);

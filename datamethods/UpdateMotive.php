@@ -9,11 +9,13 @@ $request = json_decode($postdata);
 
 $hoy = date("Y-m-d H:i:s");
 $Motive = $request->Motive;
+$Symptom = $request->Symptom;
 $index = $request->index;
 
 $response = mysql_query("UPDATE motive_table
 		SET
-		motive = '$Motive'
+		motive = '$Motive',
+		symptom = '$Symptom'
 		WHERE `index`=$index");
 
 mysql_close($connection); // Connection Closed

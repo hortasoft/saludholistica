@@ -66,26 +66,263 @@ $hcid = $_GET["HCId"];
 	</nav>
 	<div class="container" ng-controller="HCCtrl" ng-init="init('<?php echo $document?>', '<?php echo $type?>', '<?php echo $hcid?>')">
 		<ul class="nav nav-tabs" role="tablist">
-		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Motivo de consulta</a></li>
-		    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-		    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-		    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+		    <li role="presentation" class="active"><a href="#motivetab" aria-controls="home" role="tab" data-toggle="tab">Motivo de consulta</a></li>
+		    <li role="presentation"><a href="#systemstab" aria-controls="profile" role="tab" data-toggle="tab">Revision por sistemas</a></li>
+		    <li role="presentation"><a href="#symptomstab" aria-controls="messages" role="tab" data-toggle="tab">Sintomas generales</a></li>
+		    <li role="presentation"><a href="#backgroundtab" aria-controls="settings" role="tab" data-toggle="tab">Antecedentes</a></li>
+		    <li role="presentation"><a href="#physictab" aria-controls="settings" role="tab" data-toggle="tab">Examen fisico</a></li>
 		</ul>
 		
 		 <div class="tab-content">
-		    <div role="tabpanel" class="tab-pane active" id="home">
+		    <div role="tabpanel" class="tab-pane active" id="motivetab">
 			    <div class="container">
 					<div class="row fieldrow">
 						<div class="col-sm-11 form-group" id="Motivetext">
 							<label for="pac-name" class="control-label">Motivo de la consulta</label> 
 							<textarea class="form-control" rows="5" id="Motive" ng_model="motive" ng_change="UpdateMotive()"></textarea>
 						</div>
+						<div class="col-sm-11 form-group" id="Symptomtext">
+							<label for="pac-name" class="control-label">Sintomas</label> 
+							<textarea class="form-control" rows="5" id="Motive" ng_model="symptom" ng_change="UpdateMotive()"></textarea>
+						</div>
 					</div>
 				</div>
 			</div>
-		    <div role="tabpanel" class="tab-pane" id="profile">dhsgc shvchgdv chsgvdhcvhsdgcsd</div>
-		    <div role="tabpanel" class="tab-pane" id="messages">siducbh sbdcjhsbdcsdghcvsgvdchsd</div>
-		    <div role="tabpanel" class="tab-pane" id="settings">iwuedhiwuh cisdcs dcs</div>
+		    <div role="tabpanel" class="tab-pane" id="systemstab">
+		    	<div class="container">
+		    		<div class="row fieldrow">
+						<div class="col-sm-3 form-group" id="headtext">
+							<label for="pac-name" class="control-label">Cabeza</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys1" ng_change="UpdateSystem()"></textarea>
+						</div>
+						<div class="col-sm-3 form-group" id="eyestext">
+							<label for="pac-name" class="control-label">Ojos</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys2" ng_change="UpdateSystem()"></textarea>
+						</div>
+						<div class="col-sm-3 form-group" id="orltext">
+							<label for="pac-name" class="control-label">ORL</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys3" ng_change="UpdateSystem()"></textarea>
+						</div>						
+					</div>
+					<div class="row fieldrow">
+						<div class="col-sm-3 form-group" id="mouthtext">
+							<label for="pac-name" class="control-label">Boca</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys4" ng_change="UpdateSystem()"></textarea>
+						</div>
+						<div class="col-sm-3 form-group" id="necktext">
+							<label for="pac-name" class="control-label">Cuello</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys5" ng_change="UpdateSystem()"></textarea>
+						</div>
+						<div class="col-sm-3 form-group" id="cptext">
+							<label for="pac-name" class="control-label">C/P</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys6" ng_change="UpdateSystem()"></textarea>
+						</div>	
+					</div>
+					<div class="row fieldrow">
+						<div class="col-sm-3 form-group" id="digesttext">
+							<label for="pac-name" class="control-label">Digestivo</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys7" ng_change="UpdateSystem()"></textarea>
+						</div>
+						<div class="col-sm-3 form-group" id="gutext">
+							<label for="pac-name" class="control-label">G/U</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys8" ng_change="UpdateSystem()"></textarea>
+						</div>
+						<div class="col-sm-3 form-group" id="endotext">
+							<label for="pac-name" class="control-label">Endocrino</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys9" ng_change="UpdateSystem()"></textarea>
+						</div>	
+					</div>
+					<div class="row fieldrow">
+						<div class="col-sm-3 form-group" id="neurotext">
+							<label for="pac-name" class="control-label">Neurologico</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys10" ng_change="UpdateSystem()"></textarea>
+						</div>
+						<div class="col-sm-3 form-group" id="osteotext">
+							<label for="pac-name" class="control-label">Osteoarticular</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys11" ng_change="UpdateSystem()"></textarea>
+						</div>
+						<div class="col-sm-3 form-group" id="muscletext">
+							<label for="pac-name" class="control-label">Musculo - esqueletico</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="sys12" ng_change="UpdateSystem()"></textarea>
+						</div>	
+					</div>
+				</div>
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="symptomstab">
+			    <div class="container">
+			    		<div class="row fieldrow">
+							<div class="col-sm-3 form-group" id="wishestext">
+								<label for="pac-name" class="control-label">Deseos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="symptom1" ng_change="UpdateSymptom()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="averstext">
+								<label for="pac-name" class="control-label">Aversiones</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="symptom2" ng_change="UpdateSymptom()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="thirsttext">
+								<label for="pac-name" class="control-label">Sed</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="symptom3" ng_change="UpdateSymptom()"></textarea>
+							</div>						
+						</div>
+						<div class="row fieldrow">
+							<div class="col-sm-3 form-group" id="heathtext">
+								<label for="pac-name" class="control-label">Calor Vital</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="symptom4" ng_change="UpdateSymptom()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="transptext">
+								<label for="pac-name" class="control-label">Transpiracion</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="symptom5" ng_change="UpdateSymptom()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="dreamstext">
+								<label for="pac-name" class="control-label">Sueño y sueños</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="symptom6" ng_change="UpdateSymptom()"></textarea>
+							</div>	
+						</div>
+						<div class="row fieldrow">
+							<div class="col-sm-6 form-group" id="mental">
+								<label for="pac-name" class="control-label">Sintomas mentales</label> 
+								<textarea class="form-control" rows="4" id="Motive" ng_model="symptom7" ng_change="UpdateSymptom()"></textarea>
+							</div>
+						</div>
+				</div>
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="backgroundtab">
+		    	<div class="container">
+			    		<div class="row fieldrow">
+							<h3>PERSONALES</h3>
+							<div class="col-sm-3 form-group" id="medicaltext">
+								<label for="pac-name" class="control-label">Medico - quirurjicos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back1" ng_change="UpdateBackGround()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="ginecotext">
+								<label for="pac-name" class="control-label">Gineco - obstetricos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back2" ng_change="UpdateBackGround()"></textarea>
+							</div>			
+							<div class="col-sm-3 form-group" id="traumatext">
+								<label for="pac-name" class="control-label">Traumaticos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back3" ng_change="UpdateBackGround()"></textarea>
+							</div>			
+						</div>
+						<div class="row fieldrow">
+							
+							<div class="col-sm-3 form-group" id="habitstext">
+								<label for="pac-name" class="control-label">Habitos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back4" ng_change="UpdateBackGround()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="venerealtext">
+								<label for="pac-name" class="control-label">Venereas</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back5" ng_change="UpdateBackGround()"></textarea>
+							</div>	
+							<div class="col-sm-3 form-group" id="pharmatext">
+								<label for="pac-name" class="control-label">Farmacologicos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back6" ng_change="UpdateBackGround()"></textarea>
+							</div>					
+						</div>
+						<div class="row fieldrow">							
+							<div class="col-sm-3 form-group" id="toxictext">
+								<label for="pac-name" class="control-label">Toxicoalergicos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back7" ng_change="UpdateBackGround()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="psicotext">
+								<label for="pac-name" class="control-label">Psicologicos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back8" ng_change="UpdateBackGround()"></textarea>
+							</div>						
+						</div>
+						<div class="row fieldrow">
+							<h3>FAMILIARES</h3>
+							<div class="col-sm-4 form-group" id="parentstext">
+								<label for="pac-name" class="control-label">Padres</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back9" ng_change="UpdateBackGround()"></textarea>
+							</div>
+							<div class="col-sm-4 form-group" id="grandstext">
+								<label for="pac-name" class="control-label">Abuelos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back10" ng_change="UpdateBackGround()"></textarea>
+							</div>					
+						</div>
+						<div class="row fieldrow">
+							
+							<div class="col-sm-4 form-group" id="unclestext">
+								<label for="pac-name" class="control-label">Tios</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back11" ng_change="UpdateBackGround()"></textarea>
+							</div>
+							<div class="col-sm-4 form-group" id="brotherstext">
+								<label for="pac-name" class="control-label">Hermanos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back12" ng_change="UpdateBackGround()"></textarea>
+							</div>											
+						</div>
+						<div class="row fieldrow">
+							<div class="col-sm-6 form-group" id="biopattext">
+								<label for="pac-name" class="control-label">BIOPATOGRAFIA</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="back13" ng_change="UpdateBackGround()"></textarea>
+							</div>										
+						</div>
+				</div>
+		    </div>
+		 	<div role="tabpanel" class="tab-pane" id="physictab">
+		 		<div class="container">
+			 		<div class="row fieldrow">
+						<div class="col-sm-2 form-group" id="tatext">
+							<label for="pac-name" class="control-label">TA</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy1" ng-change="UpdatePhysic()">
+						</div>
+						<div class="col-sm-2 form-group" id="fctext">
+							<label for="pac-name" class="control-label">FC</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy2" ng-change="UpdatePhysic()">
+						</div>
+						<div class="col-sm-2 form-group" id="frtext">
+							<label for="pac-name" class="control-label">FR</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy3" ng-change="UpdatePhysic()">
+						</div>
+						<div class="col-sm-2 form-group" id="ttext">
+							<label for="pac-name" class="control-label">T</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy4" ng-change="UpdatePhysic()">
+						</div>
+					</div>
+					<div class="row fieldrow">
+						<div class="col-sm-2 form-group" id="pstext">
+							<label for="pac-name" class="control-label">Ps</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy5" ng-change="UpdatePhysic()">
+						</div>
+						<div class="col-sm-2 form-group" id="tltext">
+							<label for="pac-name" class="control-label">Tl</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy6" ng-change="UpdatePhysic()">
+						</div>
+						<div class="col-sm-2 form-group" id="pstext">
+							<label for="pac-name" class="control-label">P. abdominal</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy7" ng-change="UpdatePhysic()">
+						</div>
+						<div class="col-sm-2 form-group" id="tltext">
+							<label for="pac-name" class="control-label">P. cadera</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy8" ng-change="UpdatePhysic()">
+						</div>
+					</div>
+					<div class="row fieldrow">
+						<div class="col-sm-2 form-group" id="imctext">
+							<label for="pac-name" class="control-label">IMC</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy12" ng-change="UpdatePhysic()">
+						</div>
+						<div class="col-sm-2 form-group" id="icctext">
+							<label for="pac-name" class="control-label">ICC</label> 
+							<input type="text" class="form-control" placeholder="" name=""	id="pac-doc" ng-model="phy13" ng-change="UpdatePhysic()">
+						</div>
+					</div>
+					<div class="row fieldrow">
+							<div class="col-sm-3 form-group" id="generaltext">
+								<label for="pac-name" class="control-label">Estado general</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="phy9" ng_change="UpdatePhysic()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="acttext">
+								<label for="pac-name" class="control-label">Actitud del enfermo</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="phy10" ng_change="UpdatePhysic()"></textarea>
+							</div>
+							<div class="col-sm-3 form-group" id="findtext">
+								<label for="pac-name" class="control-label">Hallazgos</label> 
+								<textarea class="form-control" rows="2" id="Motive" ng_model="phy11" ng_change="UpdatePhysic()"></textarea>
+							</div>						
+						</div>
+				</div>
+		 	</div>
+		 
 		 </div>
 	</div>
 	<script src="js/jquery-1.11.3.min.js"></script>

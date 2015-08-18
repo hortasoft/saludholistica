@@ -177,6 +177,19 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 			$('#GenreDD').attr('disabled', true);
 			$('#Savebtn').css('display', 'none');
 			$('#Updatebtn').css('display', 'block');
+			$('#hisclinic').css('display', 'block');
+			$scope.GetHcInfo();
+		}
+		
+		$scope.GetHcInfo = function(){
+			$http.post('/saludholistica/datamethods/GetHcInfo.php',{
+				Iddocument : $scope.Iddocument,
+				Idtype : $scope.Idtype
+			}).success(function(data, status,headers, config) {
+				$scope.hcdata=data;
+			}).error(	function(data, status,headers, config) {
+				
+			});
 		}
 		
 		$scope.AddHC = function(){

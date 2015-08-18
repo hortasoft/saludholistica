@@ -9,6 +9,8 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		$scope.CreateSymptoms();
 		$scope.CreateBackGround();
 		$scope.CreatePhysic();
+		$scope.CreateAnalisys();
+		$scope.CreateDiag();
 	}
 	
 	$scope.CreateMotive = function(){
@@ -235,6 +237,113 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 				
 		});
 		}
+	}
+	
+	$scope.CreateAnalisys = function(){
+		if($scope.hcid != null && 
+				$scope.hcid != undefined){
+			$http.post('/saludholistica/datamethods/InsertAnalisys.php',{
+				HCId : $scope.hcid
+			}).success(function(data, status,headers, config) {
+				$scope.HCanalisysindex = data[0];
+				$scope.ana1 = data[2];
+				$scope.ana2 = data[3];
+				$scope.ana3 = data[4];
+			}).error(	function(data, status,headers, config) {
+				
+		});
+		}
+	}
+	
+	$scope.UpdateAnalisys = function(){
+		if($scope.hcid != null && $scope.hcid != undefined){
+			$http.post('/saludholistica/datamethods/UpdateAnalisys.php',{
+				index : $scope.HCanalisysindex,
+				ana1: $scope.ana1,
+				ana2: $scope.ana2,
+				ana3: $scope.ana3
+			}).success(function(data, status,headers, config) {
+				
+			}).error(	function(data, status,headers, config) {
+				
+		});
+		}
+	}
+	
+	$scope.CreateDiag = function(){
+		if($scope.hcid != null && 
+				$scope.hcid != undefined){
+			$http.post('/saludholistica/datamethods/InsertDiag.php',{
+				HCId : $scope.hcid
+			}).success(function(data, status,headers, config) {
+				$scope.HCdiagindex = data[0];
+				$scope.diag1 = data[2];
+				$scope.diag2 = data[3];
+				$scope.diag3 = data[4];
+				$scope.diag4 = data[5];
+			}).error(	function(data, status,headers, config) {
+				
+		});
+		}
+	}
+	
+	$scope.UpdateDiag = function(){
+		if($scope.hcid != null && $scope.hcid != undefined){
+			$http.post('/saludholistica/datamethods/UpdateDiag.php',{
+				index : $scope.HCdiagindex,
+				diag1: $scope.diag1,
+				diag2: $scope.diag2,
+				diag3: $scope.diag3,
+				diag4: $scope.diag4
+			}).success(function(data, status,headers, config) {
+				
+			}).error(	function(data, status,headers, config) {
+				
+		});
+		}
+	}
+	
+	$scope.SearchCie = function(){
+		if($scope.ciecode == null || $scope.ciecode == undefined || $scope.ciecode == ""){
+			$scope.ciecode == "";
+		}
+		if($scope.ciename == null || $scope.ciename == undefined || $scope.ciename == ""){
+			$scope.ciename == "";
+		}
+		$http.post('/saludholistica/datamethods/SearchCie.php',{
+			code: $scope.ciecode,
+			ciename: $scope.ciename
+		}).success(function(data, status,headers, config) {
+			$scope.Ciedata = data;
+		}).error(	function(data, status,headers, config) {
+			
+	});
+	}
+	
+	$scope.addCie = function(codigo) {
+		$http.post('/saludholistica/datamethods/InsertCie.php',{
+			code: codigo,
+			HCId : $scope.hcid
+		}).success(function(data, status,headers, config) {
+			$scope.Ciecodes = data
+		}).error(	function(data, status,headers, config) {
+	});
+	}
+	
+	$scope.Finish = function(){
+		$http.post('/saludholistica/datamethods/Finish.php',{
+			HCId : $scope.hcid,
+			HCindex: $scope.HCindex,
+			systemindex : $scope.HCsystemindex,
+			symptomindex : $scope.HCsymptomsindex,
+			backindex : $scope.HCbackgroundindex,
+			physicindex : $scope.HCphysicindex,
+			analisysindex : $scope.HCanalisysindex,
+			diagindex : $scope.HCdiagindex
+		}).success(function(data, status,headers, config) {
+			
+		}).error(	function(data, status,headers, config) {
+		});
 	}
 	
 } ]);

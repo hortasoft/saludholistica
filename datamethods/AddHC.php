@@ -11,7 +11,7 @@
 	$hoy = date("Y-m-d H:i:s");
 	$HCId = "";
 	
-	$result = mysql_query("SELECT MAX('index') FROM hcindex", $connection);
+	$result = mysql_query("SELECT MAX(`index`) FROM hcindex", $connection);
 	
 		
 	if(!$result){
@@ -19,7 +19,7 @@
 	}else{
 		$row = mysql_fetch_row($result);
 		$index= 10001 + $row[0];
-		$HCId= "GE" + $index;
+		$HCId= "GE".$index;
 	}
 	
 	$response = mysql_query("INSERT INTO hcindex

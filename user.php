@@ -257,15 +257,17 @@
 					<table class="table">
 						<tr>
 					    	<th>REGISTRO</th>
-					    	<th>DESCRIPCION</th>
+					    	<th>FECHA DE REGISTRO</th>
 					    	<th>TIPO</th>
 					    	<th>ACCION</th>
 				    	</tr>
-				    	<tr>
-				    		<td>GE1001</td>
-				    		<td>Dolor de cabeza</td>
-				    		<td>Odontologia</td>
-				    		<td>djsk</td>
+				    	<tr ng-repeat="model in hcdata">
+				    		<td>{{model.id}}</td>
+				    		<td>{{model.date}}</td>
+				    		<td>General</td>
+				    		<td><button type="button" class="btn btn-primary"
+									
+									ng-click="AddHC()">Actualizar</button></td>
 				    	</tr>
 					</table>
 					<div class="panel-body">

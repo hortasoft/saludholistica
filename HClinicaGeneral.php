@@ -71,6 +71,9 @@ $hcid = $_GET["HCId"];
 		    <li role="presentation"><a href="#symptomstab" aria-controls="messages" role="tab" data-toggle="tab">Sintomas generales</a></li>
 		    <li role="presentation"><a href="#backgroundtab" aria-controls="settings" role="tab" data-toggle="tab">Antecedentes</a></li>
 		    <li role="presentation"><a href="#physictab" aria-controls="settings" role="tab" data-toggle="tab">Examen fisico</a></li>
+		    <li role="presentation"><a href="#analisystab" aria-controls="analisys" role="tab" data-toggle="tab">Analisis de sintomas</a></li>
+		    <li role="presentation"><a href="#diagtab" aria-controls="analisys" role="tab" data-toggle="tab">Diagnostico</a></li>
+		    <li role="presentation"><a href="#conductab" aria-controls="analisys" role="tab" data-toggle="tab">Conducta</a></li>
 		</ul>
 		
 		 <div class="tab-content">
@@ -258,6 +261,7 @@ $hcid = $_GET["HCId"];
 						</div>
 				</div>
 		    </div>
+		 	
 		 	<div role="tabpanel" class="tab-pane" id="physictab">
 		 		<div class="container">
 			 		<div class="row fieldrow">
@@ -323,7 +327,124 @@ $hcid = $_GET["HCId"];
 				</div>
 		 	</div>
 		 
-		 </div>
+		 
+		<div role="tabpanel" class="tab-pane" id="analisystab">
+			<div class="container">
+				<div class="row fieldrow">
+					<div class="col-sm-6 form-group" id="restext">
+						<label for="pac-name" class="control-label">Resumen de sintomas caracteristicos</label> 
+						<textarea class="form-control" rows="2" id="Motive" ng_model="ana1" ng_change="UpdateAnalisys()"></textarea>
+					</div>	
+				</div>
+				<div class="row fieldrow">
+					<div class="col-sm-6 form-group" id="reperttext">
+						<label for="pac-name" class="control-label">Sintomas a repertorizar</label> 
+						<textarea class="form-control" rows="2" id="Motive" ng_model="ana2" ng_change="UpdateAnalisys()"></textarea>
+					</div>	
+				</div>
+				<div class="row fieldrow">
+					<div class="col-sm-6 form-group" id="repertresultext">
+						<label for="pac-name" class="control-label">Resultado de la repertorizacion</label> 
+						<textarea class="form-control" rows="2" id="Motive" ng_model="ana3" ng_change="UpdateAnalisys()"></textarea>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="diagtab">
+			<div class="container">
+					<div class="row fieldrow">
+						<div class="col-sm-5 form-group" id="restext">
+							<label for="pac-name" class="control-label">Nosologico</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="diag1" ng_change="UpdateDiag()"></textarea>
+						</div>	
+						<div class="col-sm-5 form-group" id="reperttext">
+							<label for="pac-name" class="control-label">Miasmatico</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="diag2" ng_change="UpdateDiag()"></textarea>
+						</div>	
+					</div>
+					<div class="row fieldrow">
+						<div class="col-sm-5 form-group" id="reperttext">
+							<label for="pac-name" class="control-label">Integral</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="diag3" ng_change="UpdateDiag()"></textarea>
+						</div>	
+						<div class="col-sm-5 form-group" id="reperttext">
+							<label for="pac-name" class="control-label">Medicamentoso</label> 
+							<textarea class="form-control" rows="2" id="Motive" ng_model="diag4" ng_change="UpdateDiag()"></textarea>
+						</div>	
+					</div>
+					
+						<div class="row fieldrow">
+						<h3>CIE 10</h3>
+							<div class="col-sm-12">
+								<div class="col-sm-1 form-group" id="docinput">
+									<label for="pac-name" class="control-label">Codigo</label> <input
+										type="text" class="form-control" placeholder="" name="name"
+										id="pac-doc" ng-model="ciecode" required>
+								</div>
+								<div class="col-sm-4 form-group" id="docinput">
+									<label for="pac-name" class="control-label">Nombre</label> <input
+										type="text" class="form-control" placeholder="" name="name"
+										id="pac-doc" ng-model="ciename" required>
+								</div>
+								<button type="button" class="btn btn-default" id="SearchDoc"
+										ng-click="SearchCie()">
+										<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</div>
+						</div>
+						<div class="row fieldrow">
+							<div class="col-sm-6">
+								<table class="table">						
+								<tr>
+									<th></th>
+							    	<th>CODIGO</th>
+							    	<th>DESCRIPCION</th>
+							    	<th>SEXO</th>
+							    	<th>MIN</th>
+							    	<th>MAX</th>
+							    	<th>NOMAIN</th>
+							    	<th>OBSERVACIONES</th>
+						    	</tr>
+						    	<tr ng-repeat="model in Ciedata">
+						    		<td><input type="checkbox" ></td>
+						    		<td>{{model.code}}</td>
+						    		<td>{{model.name}}</td>
+						    		<td>{{model.sex}}</td>
+						    		<td>{{model.min}}</td>
+						    		<td>{{model.max}}</td>
+						    		<td>{{model.nomain}}</td>
+						    		<td>{{model.obs}}</td>						    		
+						    		<td></td>
+						    	</tr>				    	
+								</table>
+							</div>
+						</div>
+						<div class="col-sm-6">
+								<ul>
+									<li ng-repeat="model in Ciecodes">
+								</ul>			
+							
+						</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="conductab">
+			<div class="row fieldrow">
+				<div class="col-sm-6">
+					<div class="row">
+							<div class="col-sm-3 col-sm-offset-2">
+								<button type="button" class="btn btn-primary"
+									
+									ng-click="Finish()">Finalizar</button>
+							</div>
+							<div class="col-sm-3 col-sm-offset-3" >
+								<button type="button" class="btn btn-success"
+									
+									ng-click="Imprimir()">Imprimir</button>
+							</div>
+				</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

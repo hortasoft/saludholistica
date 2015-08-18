@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set('America/Bogota');
 	$connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server..
 	$db = mysql_select_db("saludholisticadb", $connection); // Selecting Database
 	//Fetching Values from URL
@@ -23,6 +24,7 @@
 	$religion=$request->religion;
 	$reference=$request->reference;
 	$hoy = date("Y-m-d H:i:s");
+
 	//Insert query
 	
 	$result = mysql_query("SELECT document FROM personal_data WHERE document = $Iddocument AND documentType = $Idtype", $connection);
@@ -45,7 +47,8 @@
 	eps,
 	religion,
 	reference,
-	createDate)
+	createDate,
+	updateDate)
 	VALUES
 	('$Iddocument',
 	'$Idtype',
@@ -64,6 +67,7 @@
 	'$eps',
 	'$religion',
 	'$reference',
+	'$hoy',
 	'$hoy')
 	");
 	}

@@ -52,6 +52,7 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 								}).success(function(data, status,headers, config) {
 									if(data){
 										$('#UserRegisteredAlert').show();
+										$scope.DisableFields();
 									}else{
 										alert("El Paciente ya existe");
 									}
@@ -84,6 +85,37 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 				}
 			}
 		}
+		
+		$scope.UpdateData = function() {			
+				$http.post('/saludholistica/datamethods/UpdateUser.php',{
+									Iddocument : $scope.Iddocument,
+									Idtype : $scope.Idtype,
+									name : $scope.name,
+									borndate : $scope.borndate,
+									bornplace : $scope.bornplace,
+									civilstate : $scope.civilstate,
+									gender : $scope.gender,
+									ocupation : $scope.ocupation,
+									procedencia : $scope.procedencia,
+									address : $scope.address,
+									phone : $scope.phone,
+									cellphone : $scope.cellphone,
+									company : $scope.company,
+									companyphone : $scope.companyphone,
+									eps : $scope.eps,
+									religion : $scope.religion,
+									reference : $scope.reference
+								}).success(function(data, status,headers, config) {
+									if(data){
+										$('#UserUpdatedAlert').show();
+										$scope.DisableFields();
+									}else{
+										alert("qwertye");
+									}
+								}).error(function(data, status,headers, config) {
+									
+								});				
+		}
 
 		$scope.SearchPatient = function() {
 			$http.post('/saludholistica/datamethods/SearchUser.php',{
@@ -94,6 +126,7 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 					$('#UserNotFoundAlert').show();
 				}else{
 				$scope.FillPatientData(data);
+				$scope.DisableFields();
 				}
 			}).error(	function(data, status,headers, config) {
 				alert("paila");
@@ -116,8 +149,36 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 			{
 				$("#GenreBtn").text("Femenino");
 			}
+			$scope.ocupation = data[8];
+			$scope.procedencia = data[9];
+			$scope.address = data[10];
+			$scope.phone = data[11];
+			$scope.cellphone = data[12];
+			$scope.company = data[13];
+			$scope.companyphone = data[14];
+			$scope.eps = data[15];
+			$scope.religion = data[16];
+			$scope.reference = data[17];
+			$scope.regdate = data[18];
+			$scope.update = data[19];
+			$('#regdates').css('display', 'block');
 		}
 
+		$scope.DisableFields = function(){
+			$('#pac-doc').attr('disabled', true);
+			$('#DocTypeDD').attr('disabled', true);
+			$('#pac-name').attr('disabled', true);
+			$('#hc-bornday').attr('disabled', true);
+			$('#hc-bornmonth').attr('disabled', true);
+			$('#hc-bornyear').attr('disabled', true);
+			$('#hc-age').attr('disabled', true);
+			$('#hc-bornplace').attr('disabled', true);
+			$('#pac-civil').attr('disabled', true);
+			$('#GenreDD').attr('disabled', true);
+			$('#Savebtn').css('display', 'none');
+			$('#Updatebtn').css('display', 'block');
+		}
+		
 		$scope.$watch('bornday', function() {
 			if ($scope.bornday != null
 					&& $scope.bornday != undefined

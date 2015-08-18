@@ -26,3 +26,18 @@
 #UserFoundAlert{
 	display:none;
 }
+
+#regdates{
+	display:none;
+	margin-top: 15px;
+}
+
+#Updatebtn{
+	display:none;
+	margin-left: 44%;
+}
+
+#Savebtn{
+	display: block;
+	margin-left: 44%;
+}

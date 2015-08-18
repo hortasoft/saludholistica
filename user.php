@@ -89,13 +89,13 @@
 								<div class="col-sm-4 form-group" id="docinput">
 									<label for="pac-name" class="control-label">Documento</label> <input
 										type="text" class="form-control" placeholder="" name="name"
-										id="pac-name" ng-model="Iddocument" required>
+										id="pac-doc" ng-model="Iddocument" required>
 								</div>
 								<div class="col-sm-8 form-group" id="doctypeinput">
 									<div class="btn-group" style="margin-top: 24px">
 										<button type="button" class="btn btn-default" id="DocTypeBtn" required>Tipo</button>
 										<button type="button" class="btn btn-default dropdown-toggle"
-											data-toggle="dropdown" aria-expanded="false" required>
+											data-toggle="dropdown" aria-expanded="false" id="DocTypeDD" required>
 											<span class="caret"></span> <span class="sr-only">Toggle
 												Dropdown</span>
 										</button>
@@ -159,7 +159,7 @@
 									<div class="btn-group" style="margin-top: 24px">
 										<button type="button" class="btn btn-default" id="GenreBtn">Sexo</button>
 										<button type="button" class="btn btn-default dropdown-toggle"
-											data-toggle="dropdown" aria-expanded="false">
+											data-toggle="dropdown" aria-expanded="false" id="GenreDD" required>
 											<span class="caret"></span> <span class="sr-only">Toggle
 												Dropdown</span>
 										</button>
@@ -174,68 +174,111 @@
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Ocupacion</label> <input
 									type="text" class="form-control" placeholder="" name="name"
-									id="pac-name" ng-model="ocupation">
+									ng-model="ocupation">
 							</div>
 						</div>
 						<div class="row fieldrow">
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Procedencia</label>
 								<input type="text" class="form-control" placeholder=""
-									name="name" id="pac-name" ng-model="procedencia">
+									name="name" ng-model="procedencia">
 							</div>
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Domicilio</label> <input
 									type="text" class="form-control" placeholder="" name="name"
-									id="pac-name" ng-model="address">
+									ng-model="address">
 							</div>
 						</div>
 						<div class="row fieldrow">
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Telefono</label> <input
 									type="text" class="form-control" placeholder="" name="name"
-									id="pac-name" ng-model="phone">
+									ng-model="phone">
 							</div>
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Celular</label> <input
 									type="text" class="form-control" placeholder="" name="name"
-									id="pac-name" ng-model="cellphone">
+									ng-model="cellphone">
 							</div>
 						</div>
 						<div class="row fieldrow">
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Acudiente</label> <input
 									type="text" class="form-control" placeholder="" name="name"
-									id="pac-name" ng-model="company">
+									ng-model="company">
 							</div>
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Telefono acudiente</label>
 								<input type="text" class="form-control" placeholder=""
-									name="name" id="pac-name" ng-model="companyphone">
+									name="name" ng-model="companyphone">
 							</div>
 						</div>
 						<div class="row fieldrow">
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">EPS</label> <input
 									type="text" class="form-control" placeholder="" name="name"
-									id="pac-name" ng-model="eps">
+									ng-model="eps">
 							</div>
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Religion</label> <input
 									type="text" class="form-control" placeholder="" name="name"
-									id="pac-name" ng-model="religion">
+									 ng-model="religion">
 							</div>
 						</div>
 						<div class="row fieldrow">
 							<div class="col-sm-6">
 								<label for="pac-name" class="control-label">Referenciado por</label>
 								<input type="text" class="form-control" placeholder=""
-									name="name" id="pac-name" ng-model="reference">
+									name="name" ng-model="reference">
 							</div>
-							<div class="col-sm-3 col-sm-offset-2">
-
+							<div class="col-sm-6" id="regdates">
+								<p><strong>Fecha de registro:</strong>{{regdate | date:'d/M/yy h:mm a' }}</p>
+								<p><strong>Ultima actualizacion:</strong>{{update | date:'d/M/yy h:mm a'}}</p>
+							</div>
+							
+						</div>
+						<div class="row">
+							<div class="col-sm-12" id="Savebtn">
 								<button type="button" class="btn btn-primary"
-									style="margin-top: 24px;" id="SaveWaiting"
+									style="margin-top: 24px;" 
 									ng-click="saveData()">Guardar</button>
+							</div>
+							<div class="col-sm-12" id="Updatebtn">
+								<button type="button" class="btn btn-primary"
+									style="margin-top: 24px;" 
+									ng-click="UpdateData()">Actualizar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-primary" id="hisclinic">
+				<div class="panel-heading">HISTORIA CLINICA</div>
+					<table class="table">
+						<tr>
+					    	<th>REGISTRO</th>
+					    	<th>DESCRIPCION</th>
+					    	<th>TIPO</th>
+					    	<th>ACCION</th>
+				    	</tr>
+				    	<tr>
+				    		<td>GE1001</td>
+				    		<td>Dolor de cabeza</td>
+				    		<td>Odontologia</td>
+				    		<td>djsk</td>
+				    	</tr>
+					</table>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3 col-sm-offset-2">
+								<button type="button" class="btn btn-primary"
+									style="margin-top: 24px;" 
+									ng-click="saveData()">Agregar Caso</button>
+							</div>
+							<div class="col-sm-3 col-sm-offset-3" >
+								<button type="button" class="btn btn-success"
+									style="margin-top: 24px;" 
+									ng-click="UpdateData()">Imprimir</button>
 							</div>
 						</div>
 					</div>

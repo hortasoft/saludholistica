@@ -177,7 +177,7 @@ $hcid = $_GET["HCId"];
 								<textarea class="form-control" rows="2" id="Motive" ng_model="symptom5" ng_change="UpdateSymptom()"></textarea>
 							</div>
 							<div class="col-sm-3 form-group" id="dreamstext">
-								<label for="pac-name" class="control-label">Sueño y sueños</label> 
+								<label for="pac-name" class="control-label">Sueï¿½o y sueï¿½os</label> 
 								<textarea class="form-control" rows="2" id="Motive" ng_model="symptom6" ng_change="UpdateSymptom()"></textarea>
 							</div>	
 						</div>
@@ -430,22 +430,72 @@ $hcid = $_GET["HCId"];
 		<div role="tabpanel" class="tab-pane" id="conductab">
 			<div class="row fieldrow">
 				<div class="col-sm-6">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-1">
+								<div class="panel panel-default medpanel">
+									  <div class="panel-heading">
+									    <h3 class="panel-title">Medicamentos</h3>
+									  </div>
+									  <div class="panel-body">
+										  <div class="col-sm-3 col-sm-offset-2">
+										  	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#medModal">
+												Agregar
+											</button>
+										  </div>	
+										  <div class="col-sm-3 col-sm-offset-2">
+										  	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#medModal">
+												imprimir
+											</button>
+										  </div>											
+									  </div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="row">
 							<div class="col-sm-3 col-sm-offset-2">
-								<button type="button" class="btn btn-primary"
-									
-									ng-click="Finish()">Finalizar</button>
+								<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+									Agregar
+								</button>
 							</div>
 							<div class="col-sm-3 col-sm-offset-3" >
-								<button type="button" class="btn btn-success"
-									
-									ng-click="Imprimir()">Imprimir</button>
+								<button type="button" class="btn btn-primary" ng-click="Imprimir()">
+									Imprimir
+								</button>
 							</div>
-				</div>
+					</div>
 				</div>
 			</div>
 		</div>
+		
+		<!-- medmodal -->
+	<div class="modal fade" id="medModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Agregar Medicamento</h4>
+	      </div>
+	      <div class="modal-body">
+		      <div class="row fieldrow">
+			  	<div class="col-sm-11 form-group" id="">					
+					<textarea class="form-control" rows="2" id="addmedtxt" ng_model="medAdded"></textarea>
+				</div>
+		      </div>
+		  </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="AddMed()">Agregar</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
+		
+	</div>
+	
+	
+		
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.validate.min.js"></script>

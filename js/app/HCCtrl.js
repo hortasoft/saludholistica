@@ -346,4 +346,16 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		});
 	}
 	
+	$scope.AddMed = function(){
+		debugger;
+		if($scope.medAdded != null && $scope.medAdded != undefined && $scope.medAdded != ""){
+			$http.post('/saludholistica/datamethods/AddMed.php',{
+				HCId : $scope.hcid,
+				Med: $scope.medAdded
+			}).success(function(data, status,headers, config) {
+				
+			}).error(	function(data, status,headers, config) {
+			});
+		}
+	}
 } ]);

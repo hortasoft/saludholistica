@@ -11,12 +11,13 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		$scope.CreatePhysic();
 		$scope.CreateAnalisys();
 		$scope.CreateDiag();
+		$scope.LoadMed();
 	}
 	
 	$scope.CreateMotive = function(){
 		if($scope.hcid != null && 
 				$scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/InsertMotive.php',{
+			$http.post('datamethods/InsertMotive.php',{
 				HCId : $scope.hcid
 			}).success(function(data, status,headers, config) {
 				$scope.HCindex = data[0];
@@ -30,7 +31,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	
 	$scope.UpdateMotive = function(){
 		if($scope.hcid != null && $scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/UpdateMotive.php',{
+			$http.post('datamethods/UpdateMotive.php',{
 				index : $scope.HCindex,
 				Motive : $scope.motive,
 				Symptom : $scope.symptom
@@ -45,7 +46,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	$scope.CreateSystems = function(){
 		if($scope.hcid != null && 
 				$scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/InsertSystem.php',{
+			$http.post('datamethods/InsertSystem.php',{
 				HCId : $scope.hcid
 			}).success(function(data, status,headers, config) {
 				$scope.HCsystemindex = data[0];
@@ -69,7 +70,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	
 	$scope.UpdateSystem = function(){
 		if($scope.hcid != null && $scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/UpdateSystem.php',{
+			$http.post('datamethods/UpdateSystem.php',{
 				index : $scope.HCsystemindex,
 				sys1: $scope.sys1,
 				sys2: $scope.sys2,
@@ -94,7 +95,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	$scope.CreateSymptoms = function(){
 		if($scope.hcid != null && 
 				$scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/InsertSymptom.php',{
+			$http.post('datamethods/InsertSymptom.php',{
 				HCId : $scope.hcid
 			}).success(function(data, status,headers, config) {
 				$scope.HCsymptomsindex = data[0];
@@ -113,7 +114,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	
 	$scope.UpdateSymptom = function(){
 		if($scope.hcid != null && $scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/UpdateSymptom.php',{
+			$http.post('datamethods/UpdateSymptom.php',{
 				index : $scope.HCsymptomsindex,
 				symptom1: $scope.symptom1,
 				symptom2: $scope.symptom2,
@@ -134,7 +135,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	$scope.CreateBackGround = function(){
 		if($scope.hcid != null && 
 				$scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/InsertBackGround.php',{
+			$http.post('datamethods/InsertBackGround.php',{
 				HCId : $scope.hcid
 			}).success(function(data, status,headers, config) {
 				$scope.HCbackgroundindex = data[0];
@@ -159,7 +160,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	
 	$scope.UpdateBackGround = function(){
 		if($scope.hcid != null && $scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/UpdateBackGround.php',{
+			$http.post('datamethods/UpdateBackGround.php',{
 				index : $scope.HCbackgroundindex,
 				back1: $scope.back1,
 				back2: $scope.back2,
@@ -185,7 +186,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	$scope.CreatePhysic = function(){
 		if($scope.hcid != null && 
 				$scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/InsertPhysic.php',{
+			$http.post('datamethods/InsertPhysic.php',{
 				HCId : $scope.hcid
 			}).success(function(data, status,headers, config) {
 				$scope.HCphysicindex = data[0];
@@ -216,7 +217,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 			if($scope.phy7 != null && $scope.phy7 != undefined && $scope.phy7 != "" && $scope.phy8 != null && $scope.phy8 != undefined && $scope.phy8 != "" ){
 				$scope.phy13 = ($scope.phy7)/($scope.phy8);			
 			}
-			$http.post('/saludholistica/datamethods/UpdatePhysic.php',{
+			$http.post('datamethods/UpdatePhysic.php',{
 				index : $scope.HCphysicindex,
 				phy1: $scope.phy1,
 				phy2: $scope.phy2,
@@ -242,7 +243,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	$scope.CreateAnalisys = function(){
 		if($scope.hcid != null && 
 				$scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/InsertAnalisys.php',{
+			$http.post('datamethods/InsertAnalisys.php',{
 				HCId : $scope.hcid
 			}).success(function(data, status,headers, config) {
 				$scope.HCanalisysindex = data[0];
@@ -257,7 +258,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	
 	$scope.UpdateAnalisys = function(){
 		if($scope.hcid != null && $scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/UpdateAnalisys.php',{
+			$http.post('datamethods/UpdateAnalisys.php',{
 				index : $scope.HCanalisysindex,
 				ana1: $scope.ana1,
 				ana2: $scope.ana2,
@@ -273,7 +274,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	$scope.CreateDiag = function(){
 		if($scope.hcid != null && 
 				$scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/InsertDiag.php',{
+			$http.post('datamethods/InsertDiag.php',{
 				HCId : $scope.hcid
 			}).success(function(data, status,headers, config) {
 				$scope.HCdiagindex = data[0];
@@ -289,7 +290,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	
 	$scope.UpdateDiag = function(){
 		if($scope.hcid != null && $scope.hcid != undefined){
-			$http.post('/saludholistica/datamethods/UpdateDiag.php',{
+			$http.post('datamethods/UpdateDiag.php',{
 				index : $scope.HCdiagindex,
 				diag1: $scope.diag1,
 				diag2: $scope.diag2,
@@ -310,7 +311,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		if($scope.ciename == null || $scope.ciename == undefined || $scope.ciename == ""){
 			$scope.ciename == "";
 		}
-		$http.post('/saludholistica/datamethods/SearchCie.php',{
+		$http.post('datamethods/SearchCie.php',{
 			code: $scope.ciecode,
 			ciename: $scope.ciename
 		}).success(function(data, status,headers, config) {
@@ -321,7 +322,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.addCie = function(codigo) {
-		$http.post('/saludholistica/datamethods/InsertCie.php',{
+		$http.post('datamethods/InsertCie.php',{
 			code: codigo,
 			HCId : $scope.hcid
 		}).success(function(data, status,headers, config) {
@@ -331,7 +332,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.Finish = function(){
-		$http.post('/saludholistica/datamethods/Finish.php',{
+		$http.post('datamethods/Finish.php',{
 			HCId : $scope.hcid,
 			HCindex: $scope.HCindex,
 			systemindex : $scope.HCsystemindex,
@@ -347,15 +348,25 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.AddMed = function(){
-		debugger;
+		
 		if($scope.medAdded != null && $scope.medAdded != undefined && $scope.medAdded != ""){
-			$http.post('/saludholistica/datamethods/AddMed.php',{
+			$http.post('datamethods/AddMed.php',{
 				HCId : $scope.hcid,
 				Med: $scope.medAdded
 			}).success(function(data, status,headers, config) {
-				
+				$scope.medicines = data;
+				$('#medModal').modal('hide');			
 			}).error(	function(data, status,headers, config) {
 			});
 		}
+	}
+	
+	$scope.LoadMed = function(){
+		$http.post('datamethods/GetMed.php',{
+			HCId : $scope.hcid
+		}).success(function(data, status,headers, config) {
+			$scope.medicines = data;	
+		}).error(	function(data, status,headers, config) {
+		});
 	}
 } ]);

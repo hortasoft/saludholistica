@@ -7,30 +7,10 @@
 	$request = json_decode($postdata);
 	
 	$HCId=$request->HCId;
-	$Med=$request->Med;
-	$hoy = date("Y-m-d H:i:s");
-	$MedStatus = 1;
-	$status = 0;
-	
-	
-	
-	$response = mysql_query("INSERT INTO medicamentos
-		(HCId,
-		medicamento,
-		date,
-		medstatus,
-		status)
-		VALUES
-		('$HCId',
-		'$Med',
-		'$hoy',
-		'$MedStatus',
-		'$status')"
-	);
 	
 	$query = mysql_query("SELECT * FROM medicamentos WHERE HCId = '$HCId' ", $connection);
 	
-$myarray = array();
+	$myarray = array();
 	while($row = mysql_fetch_assoc($query)){
 		$medicamento=$row['medicamento'];
 		$date  = $row['date'];

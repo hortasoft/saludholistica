@@ -438,6 +438,24 @@ $hcid = $_GET["HCId"];
 									    <h3 class="panel-title">Medicamentos</h3>
 									  </div>
 									  <div class="panel-body">
+										  <div class="row">
+										  	<div class="col-sm-10">
+												<table class="table">						
+												<tr>
+											    	<th>MEDICAMENTO</th>
+											    	<th>FECHA DE CREACION</th>
+											    	<th>ESTADO</th>
+											    	<th>ACCIONES</th>
+										    	</tr>
+										    	<tr ng-repeat="model in medicines">									    		
+										    		<td>{{model.med}}</td>
+										    		<td>{{model.date}}</td>
+										    		<td>{{model.wordstatus}}</td>									    				    		
+										    		
+										    	</tr>				    	
+												</table>
+											</div>
+										  </div>
 										  <div class="col-sm-3 col-sm-offset-2">
 										  	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#medModal">
 												Agregar

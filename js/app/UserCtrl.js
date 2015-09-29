@@ -203,6 +203,10 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 			});
 		}
 		
+		$scope.OpenHC = function(id){			
+			window.location.replace("http://localhost/saludholistica/HClinicaGeneral.php?id=" +  $scope.Iddocument +"&type="+$scope.Idtype+"&HCId="+id);
+		}
+		
 		$scope.$watch('bornday', function() {
 			if ($scope.bornday != null
 					&& $scope.bornday != undefined

@@ -11,6 +11,8 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		$scope.CreatePhysic();
 		$scope.CreateAnalisys();
 		$scope.CreateDiag();
+		$scope.LoadMed();
+		$scope.LoadExa();
 	}
 	
 	$scope.CreateMotive = function(){
@@ -347,15 +349,77 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.AddMed = function(){
-		debugger;
 		if($scope.medAdded != null && $scope.medAdded != undefined && $scope.medAdded != ""){
 			$http.post('/saludholistica/datamethods/AddMed.php',{
 				HCId : $scope.hcid,
 				Med: $scope.medAdded
 			}).success(function(data, status,headers, config) {
-				
+				$scope.meddata = data,
+				$('#medModal').modal('hide')
 			}).error(	function(data, status,headers, config) {
 			});
 		}
 	}
+	
+	$scope.LoadMed = function(){
+		$http.post('/saludholistica/datamethods/LoadMed.php',{
+			HCId : $scope.hcid,
+		}).success(function(data, status,headers, config) {
+			$scope.meddata = data
+		}).error(	function(data, status,headers, config) {
+		});
+	}
+	
+	$scope.UpdMedStt = function(medid, tostat){
+		$http.post('/saludholistica/datamethods/UpdateMed.php',{
+			HCId : $scope.hcid,
+			MedId : medid,
+			ToStat : tostat
+		}).success(function(data, status,headers, config) {
+			$scope.meddata = data
+		}).error(	function(data, status,headers, config) {
+		});
+	}
+	
+	$scope.AddExa = function(){
+		if($scope.exaname != null && $scope.exaname != undefined && $scope.exaname != ""){
+			$http.post('/saludholistica/datamethods/AddExa.php',{
+				HCId : $scope.hcid,
+				Exa: $scope.exaname
+			}).success(function(data, status,headers, config) {
+				$scope.exadata = data,
+				$('#exaModal').modal('hide')
+			}).error(	function(data, status,headers, config) {
+			});
+		}
+	}
+	
+	$scope.setexachange = function(id,name,result){
+		$scope.exaid=id;
+		$scope.exaname=name;
+		$scope.exares=result;
+	}
+	
+	$scope.LoadExa = function(){
+		$http.post('/saludholistica/datamethods/LoadExa.php',{
+			HCId : $scope.hcid,
+		}).success(function(data, status,headers, config) {
+			$scope.exadata = data
+		}).error(	function(data, status,headers, config) {
+		});
+	}
+	
+	$scope.UpdExa = function(){
+		$http.post('/saludholistica/datamethods/UpdateExa.php',{
+			HCId : $scope.hcid,
+			id : $scope.exaid,
+			res : $scope.exares,
+			name : $scope.exaname
+		}).success(function(data, status,headers, config) {
+			$scope.exadata = data,
+			$('#exaupdModal').modal('hide')
+		}).error(	function(data, status,headers, config) {
+		});
+	}
+	
 } ]);

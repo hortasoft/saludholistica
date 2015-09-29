@@ -267,7 +267,7 @@
 				    		<td>General</td>
 				    		<td><button type="button" class="btn btn-primary"
 									
-									ng-click="AddHC()">Actualizar</button></td>
+									ng-click="OpenHC(model.id)">Actualizar</button></td>
 				    	</tr>
 					</table>
 					<div class="panel-body">

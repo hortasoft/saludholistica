@@ -35,7 +35,7 @@ $hcid = $_GET["HCId"];
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Salud Holistica</a>
+				<a class="navbar-brand" href="user.php">Salud Holistica</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -429,8 +429,9 @@ $hcid = $_GET["HCId"];
 		</div>
 		<div role="tabpanel" class="tab-pane" id="conductab">
 			<div class="row fieldrow">
-				<div class="col-sm-6">
+				<div class="col-sm-12">
 					<div class="container">
+						<!-- row medicamentos -->
 						<div class="row">
 							<div class="col-sm-9 col-sm-offset-1">
 								<div class="panel panel-default medpanel">
@@ -438,6 +439,30 @@ $hcid = $_GET["HCId"];
 									    <h3 class="panel-title">Medicamentos</h3>
 									  </div>
 									  <div class="panel-body">
+									  	<div class="row">
+									  		<table class="table">						
+												<tr>
+											    	<th>DESCRIPCION</th>
+											    	<th>FECHA FORMULACION</th>
+											    	<th>FECHA ULTIMA MODIFICACION</th>
+											    	<th>ESTADO</th>
+											    	<th>ACCIONES</th>
+										    	</tr>
+										    	<tr ng-repeat="model in meddata">
+										    		<td>{{model.med}}</td>
+										    		<td>{{model.date}}</td>	
+										    		<td>{{model.lastdate}}</td>		    		
+										    		<td>{{model.medstatus}}</td>
+										    		<td><button type="button" class="btn btn-warning btn-xs" ng-click="UpdMedStt(model.id, 0)" ng-show="model.medstatus=='Activo'">
+														Suspender
+													</button>
+													<button type="button" class="btn btn-success btn-xs" ng-click="UpdMedStt(model.id, 1)" ng-show="model.medstatus=='Suspendido'">
+														Activar
+													</button>
+													</td>
+										    	</tr>				    	
+											</table>
+									  	</div>
 										  <div class="col-sm-3 col-sm-offset-2">
 										  	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#medModal">
 												Agregar
@@ -452,11 +477,59 @@ $hcid = $_GET["HCId"];
 								</div>
 							</div>
 						</div>
+						<!-- row examenes -->
+						<div class="row">
+							<div class="col-sm-10 col-sm-offset-1">
+								<div class="panel panel-default medpanel">
+									  <div class="panel-heading">
+									    <h3 class="panel-title">Examenes Medicos</h3>
+									  </div>
+									  <div class="panel-body">
+									  	<div class="row">
+									  		<table class="table">						
+												<tr>
+											    	<th>EXAMEN</th>
+											    	<th>RESULTADO</th>
+											    	<th>FECHA FORMULACION</th>
+											    	<th>FECHA RESULTADO</th>
+											    	<th>FECHA ULTIMA MODIFICACION</th>
+											    	<th>ACCIONES</th>
+										    	</tr>
+										    	<tr ng-repeat="model in exadata">
+										    		<td>{{model.name}}</td>
+										    		<td>{{model.res}}</td>	
+										    		<td>{{model.date}}</td>		    		
+										    		<td>{{model.resdate}}</td>
+										    		<td>{{model.lastdate}}</td>
+										    		<td><button type="button" class="btn btn-warning btn-xs" ng-show="model.res=='' || model.res == null" data-toggle="modal" data-target="#exaupdModal" ng-click="setexachange(model.id,model.name,model.res)">
+														Agregar Resultado
+													</button>
+													<button type="button" class="btn btn-primary btn-xs"  ng-hide="model.res=='' || model.res == null" data-toggle="modal" data-target="#exaupdModal" ng-click="setexachange(model.id,model.name,model.res)">
+														Actualizar
+													</button>
+													</td>
+										    	</tr>				    	
+											</table>
+									  	</div>
+										  <div class="col-sm-3 col-sm-offset-2">
+										  	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exaModal">
+												Agregar
+											</button>
+										  </div>	
+										  <div class="col-sm-3 col-sm-offset-2">
+										  	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exaModal">
+												imprimir
+											</button>
+										  </div>											
+									  </div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="row">
 							<div class="col-sm-3 col-sm-offset-2">
 								<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-									Agregar
+									Finalizar
 								</button>
 							</div>
 							<div class="col-sm-3 col-sm-offset-3" >
@@ -487,6 +560,66 @@ $hcid = $_GET["HCId"];
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary" ng-click="AddMed()">Agregar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- examodal -->
+	<div class="modal fade" id="exaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Agregar examen medico</h4>
+	      </div>
+	      <div class="modal-body">
+		      <div class="row fieldrow">
+			  	<div class="col-sm-11 form-group" id="">
+			  		<label for="addexanametxt" class="control-label">Nombre</label> 					
+					<textarea class="form-control" rows="2" id="addexanametxt" ng_model="exaname"></textarea>
+				</div>
+		      </div>
+<!-- 		      <div class="row fieldrow"> -->
+<!-- 			  	<div class="col-sm-11 form-group" id=""> -->
+<!-- 			  		<label for="addexarestxt" class="control-label">Resultado</label> 					 -->
+<!-- 					<textarea class="form-control" rows="2" id="addexarestxt" ng_model="exares"></textarea> -->
+<!-- 				</div> -->
+<!-- 		      </div> -->
+		  </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="AddExa()">Agregar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- exaupdmodal -->
+	<div class="modal fade" id="exaupdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Actualizar examen medico</h4>
+	      </div>
+	      <div class="modal-body">
+		      <div class="row fieldrow">
+			  	<div class="col-sm-11 form-group" id="">
+			  		<label for="addexanametxt" class="control-label">Nombre</label> 					
+					<textarea class="form-control" rows="2" id="addexanametxt" ng_model="exaname"></textarea>
+				</div>
+		      </div>
+		      <div class="row fieldrow">
+			  	<div class="col-sm-11 form-group" id="">
+			  		<label for="addexarestxt" class="control-label">Resultado</label> 					
+					<textarea class="form-control" rows="2" id="addexarestxt" ng_model="exares"></textarea>
+				</div>
+		      </div>
+		  </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="UpdExa()">Actualizar</button>
 	      </div>
 	    </div>
 	  </div>

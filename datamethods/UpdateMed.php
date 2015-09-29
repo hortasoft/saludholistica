@@ -19,19 +19,20 @@ WHERE id = '$MedId'");
 $query = mysql_query("SELECT * FROM medicamentos WHERE HCId = '$HCId'", $connection);
 
 $myarray = array();
-while($row = mysql_fetch_assoc($query)){
-	$id=$row['id'];
-	$med = $row['medicamento'];
-	$date = $row['date'];
-	$lastdate = $row['lastUpdate'];
-	if($row['medstatus'] == 1){
-		$medstatus = "Activo";
-	}else{
-		$medstatus = "Suspendido";
+	while($row = mysql_fetch_assoc($query)){
+		$medId=$row['id'];
+		$medicamento=$row['medicamento'];
+		$date  = $row['date'];
+		$lastdate  = $row['lastUpdate'];
+		$medstatus = $row['medstatus'];		
+		$status = $row['status'];
+		if($medstatus==0){
+			$wordstatus = "Suspendido";
+		}else{
+			$wordstatus = "Activo";
+		}
+		$myarray[]=array('id' => $medId, 'med'=>$medicamento, 'date' =>$date, 'lastdate' => $lastdate, 'medstatus' => $medstatus , "wordstatus" => $wordstatus , 'status' => $status);
 	}
-	$status = $row['status'];
-	$myarray[]=array('id'=>$id, 'HCId' =>$HCId, 'med' => $med, 'date' => $date, 'lastdate' => $lastdate, "medstatus" => $medstatus, "status" => $status);
-}
 
 
 mysql_close($connection); // Connection Closed

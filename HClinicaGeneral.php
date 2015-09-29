@@ -439,7 +439,7 @@ $hcid = $_GET["HCId"];
 									    <h3 class="panel-title">Medicamentos</h3>
 									  </div>
 									  <div class="panel-body">
-<<<<<<< HEAD
+
 									  	<div class="row">
 									  		<table class="table">						
 												<tr>
@@ -447,49 +447,27 @@ $hcid = $_GET["HCId"];
 											    	<th>FECHA FORMULACION</th>
 											    	<th>FECHA ULTIMA MODIFICACION</th>
 											    	<th>ESTADO</th>
-											    	<th>ACCIONES</th>
+											    	<th class="col-sm-3">ACCIONES</th>
 										    	</tr>
 										    	<tr ng-repeat="model in meddata">
 										    		<td>{{model.med}}</td>
 										    		<td>{{model.date}}</td>	
 										    		<td>{{model.lastdate}}</td>		    		
-										    		<td>{{model.medstatus}}</td>
-										    		<td><button type="button" class="btn btn-warning btn-xs" ng-click="UpdMedStt(model.id, 0)" ng-show="model.medstatus=='Activo'">
+										    		<td>{{model.wordstatus}}</td>
+										    		<td><button type="button" class="btn btn-warning btn-xs medstat" ng-click="UpdMedStt(model.id, 0)" ng-show="model.medstatus==1">
 														Suspender
 													</button>
-													<button type="button" class="btn btn-success btn-xs" ng-click="UpdMedStt(model.id, 1)" ng-show="model.medstatus=='Suspendido'">
+													<button type="button" class="btn btn-success btn-xs medstat" ng-click="UpdMedStt(model.id, 1)" ng-show="model.medstatus==0">
 														Activar
+													</button>
+													<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#medModalUpdate" data-medId="{{model.id}}" data-med="{{model.med}}">
+														Modificar
 													</button>
 													</td>
 										    	</tr>				    	
 											</table>
 									  	</div>
-=======
-										  <div class="row">
-										  	<div class="col-sm-10">
-												<table class="table">						
-												<tr>
-											    	<th>MEDICAMENTO</th>
-											    	<th>FECHA DE CREACION</th>
-											    	<th>ESTADO</th>
-											    	<th>ACCIONES</th>
-										    	</tr>
-										    	<tr ng-repeat="model in medicines">									    		
-										    		<td>{{model.med}}</td>
-										    		<td>{{model.date}}</td>
-										    		<td>{{model.wordstatus}}</td>	
-										    		<td>
-										    			<button type="button" class="btn btn-warning btn-xs" ng-show="model.medstatus = 1" ng-click="ChangeMedStatus()" >
-															Suspender
-														</button>
-														<button type="button" class="btn btn-primary btn-xs" ng-show="model.medstatus = 0" ng-click="ChangeMedStatus()">
-															Activar
-														</button>
-										    	</tr>				    	
-												</table>
-											</div>
-										  </div>
->>>>>>> 9ce9e27d215535837614faca61581cfa83e5f7ce
+
 										  <div class="col-sm-3 col-sm-offset-2">
 										  	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#medModal">
 												Agregar
@@ -592,6 +570,30 @@ $hcid = $_GET["HCId"];
 	  </div>
 	</div>
 	
+	<!-- medmodalUpdate -->
+	<div class="modal fade" id="medModalUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Actualizar Medicamento</h4>
+	      </div>
+	      <div class="modal-body">
+		      <div class="row fieldrow">
+			  	<div class="col-sm-11 form-group" id="">					
+					<textarea class="form-control" rows="2" id="medtxt" ng_model="med"></textarea>
+				</div>
+		      </div>
+		  </div>
+	      <div class="modal-footer">
+	      	<input type="hidden" id="medId" value="" />
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="UpdMed()">Agregar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
 	<!-- examodal -->
 	<div class="modal fade" id="exaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
@@ -645,6 +647,7 @@ $hcid = $_GET["HCId"];
 		      </div>
 		  </div>
 	      <div class="modal-footer">
+	      	
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button type="button" class="btn btn-primary" ng-click="UpdExa()">Actualizar</button>
 	      </div>
@@ -664,6 +667,7 @@ $hcid = $_GET["HCId"];
 	<script src="js/general.js"></script>
 	<script src="js/app/HCCtrl.js"></script>
 	<script src="js/user.js"></script>
+	<script src="js/HC.js"></script>
 	<script>
 		$("#commentForm").validate();
 	</script>

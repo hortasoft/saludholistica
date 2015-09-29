@@ -12,10 +12,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		$scope.CreateAnalisys();
 		$scope.CreateDiag();
 		$scope.LoadMed();
-<<<<<<< HEAD
-		$scope.LoadExa();
-=======
->>>>>>> 9ce9e27d215535837614faca61581cfa83e5f7ce
+
 	}
 	
 	$scope.CreateMotive = function(){
@@ -352,30 +349,20 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.AddMed = function(){
-<<<<<<< HEAD
-=======
-		
->>>>>>> 9ce9e27d215535837614faca61581cfa83e5f7ce
 		if($scope.medAdded != null && $scope.medAdded != undefined && $scope.medAdded != ""){
 			$http.post('datamethods/AddMed.php',{
 				HCId : $scope.hcid,
 				Med: $scope.medAdded
 			}).success(function(data, status,headers, config) {
-<<<<<<< HEAD
 				$scope.meddata = data,
 				$('#medModal').modal('hide')
-=======
-				$scope.medicines = data;
-				$('#medModal').modal('hide');			
->>>>>>> 9ce9e27d215535837614faca61581cfa83e5f7ce
 			}).error(	function(data, status,headers, config) {
 			});
 		}
 	}
 	
 	$scope.LoadMed = function(){
-<<<<<<< HEAD
-		$http.post('/saludholistica/datamethods/LoadMed.php',{
+		$http.post('datamethods/LoadMed.php',{
 			HCId : $scope.hcid,
 		}).success(function(data, status,headers, config) {
 			$scope.meddata = data
@@ -384,7 +371,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.UpdMedStt = function(medid, tostat){
-		$http.post('/saludholistica/datamethods/UpdateMed.php',{
+		$http.post('datamethods/UpdateMed.php',{
 			HCId : $scope.hcid,
 			MedId : medid,
 			ToStat : tostat
@@ -394,9 +381,13 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		});
 	}
 	
+	$scope.UpdMed = function(medid){
+		
+	}
+	
 	$scope.AddExa = function(){
 		if($scope.exaname != null && $scope.exaname != undefined && $scope.exaname != ""){
-			$http.post('/saludholistica/datamethods/AddExa.php',{
+			$http.post('datamethods/AddExa.php',{
 				HCId : $scope.hcid,
 				Exa: $scope.exaname
 			}).success(function(data, status,headers, config) {
@@ -414,7 +405,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.LoadExa = function(){
-		$http.post('/saludholistica/datamethods/LoadExa.php',{
+		$http.post('datamethods/LoadExa.php',{
 			HCId : $scope.hcid,
 		}).success(function(data, status,headers, config) {
 			$scope.exadata = data
@@ -423,7 +414,7 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.UpdExa = function(){
-		$http.post('/saludholistica/datamethods/UpdateExa.php',{
+		$http.post('datamethods/UpdateExa.php',{
 			HCId : $scope.hcid,
 			id : $scope.exaid,
 			res : $scope.exares,
@@ -435,13 +426,4 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		});
 	}
 	
-=======
-		$http.post('datamethods/GetMed.php',{
-			HCId : $scope.hcid
-		}).success(function(data, status,headers, config) {
-			$scope.medicines = data;	
-		}).error(	function(data, status,headers, config) {
-		});
-	}
->>>>>>> 9ce9e27d215535837614faca61581cfa83e5f7ce
 } ]);

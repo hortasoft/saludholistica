@@ -30,7 +30,7 @@
 		'$status')"
 	);
 	
-<<<<<<< HEAD
+
 	$query = mysql_query("SELECT * FROM medicamentos WHERE HCId = '$HCId'", $connection);
 	
 	$myarray = array();
@@ -48,31 +48,9 @@
 		$myarray[]=array('id'=>$id, 'HCId' =>$HCId, 'med' => $med, 'date' => $date, 'lastdate' => $lastdate, "medstatus" => $medstatus, "status" => $status);
 	}
 	
-	
-=======
-	$query = mysql_query("SELECT * FROM medicamentos WHERE HCId = '$HCId' ", $connection);
-	
-$myarray = array();
-	while($row = mysql_fetch_assoc($query)){
-		$medicamento=$row['medicamento'];
-		$date  = $row['date'];
-		$medstatus = $row['medstatus'];		
-		$status = $row['status'];
-		if($medstatus==0){
-			$wordstatus = "Suspendido";
-		}else{
-			$wordstatus = "Activo";
-		}
-		$myarray[]=array('med'=>$medicamento, 'date' =>$date, 'medstatus' => $medstatus , "wordstatus" => $wordstatus , 'status' => $status);
-	}
-	
->>>>>>> 9ce9e27d215535837614faca61581cfa83e5f7ce
+
 	mysql_close($connection); // Connection Closed
 	echo json_encode($myarray);
-	
-	
-<<<<<<< HEAD
-=======
-	echo json_encode($myarray);
->>>>>>> 9ce9e27d215535837614faca61581cfa83e5f7ce
+
+
 ?>

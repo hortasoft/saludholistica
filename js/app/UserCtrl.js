@@ -31,7 +31,7 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 					&& $scope.borndate != undefined
 					&& $scope.bornplace != null
 					&& $scope.bornplace != undefined) {
-				$http.post('/saludholistica/datamethods/insertUser.php',{
+				$http.post('datamethods/insertUser.php',{
 									Iddocument : $scope.Iddocument,
 									Idtype : $scope.Idtype,
 									name : $scope.name,
@@ -87,7 +87,7 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 		}
 		
 		$scope.UpdateData = function() {			
-				$http.post('/saludholistica/datamethods/UpdateUser.php',{
+				$http.post('datamethods/UpdateUser.php',{
 									Iddocument : $scope.Iddocument,
 									Idtype : $scope.Idtype,
 									name : $scope.name,
@@ -118,7 +118,7 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 		}
 
 		$scope.SearchPatient = function() {
-			$http.post('/saludholistica/datamethods/SearchUser.php',{
+			$http.post('datamethods/SearchUser.php',{
 				Iddocument : $scope.Iddocument,
 				Idtype : $scope.Idtype
 			}).success(function(data, status,headers, config) {
@@ -182,7 +182,7 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 		}
 		
 		$scope.GetHcInfo = function(){
-			$http.post('/saludholistica/datamethods/GetHcInfo.php',{
+			$http.post('datamethods/GetHcInfo.php',{
 				Iddocument : $scope.Iddocument,
 				Idtype : $scope.Idtype
 			}).success(function(data, status,headers, config) {
@@ -193,11 +193,11 @@ SHapp.controller('userCtrl',['$http','$scope','$interval','$q',function($http, $
 		}
 		
 		$scope.AddHC = function(){
-			$http.post('/saludholistica/datamethods/AddHC.php',{
+			$http.post('datamethods/AddHC.php',{
 				Iddocument : $scope.Iddocument,
 				Idtype : $scope.Idtype
 			}).success(function(data, status,headers, config) {
-				window.location.replace("http://localhost/saludholistica/HClinicaGeneral.php?id=" +  $scope.Iddocument +"&type="+$scope.Idtype+"&HCId="+data);
+				window.location.href = "HClinicaGeneral.php?id=" +  $scope.Iddocument +"&type="+$scope.Idtype+"&HCId="+data;
 			}).error(	function(data, status,headers, config) {
 				
 			});

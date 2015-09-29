@@ -439,6 +439,7 @@ $hcid = $_GET["HCId"];
 									    <h3 class="panel-title">Medicamentos</h3>
 									  </div>
 									  <div class="panel-body">
+<<<<<<< HEAD
 									  	<div class="row">
 									  		<table class="table">						
 												<tr>
@@ -463,6 +464,32 @@ $hcid = $_GET["HCId"];
 										    	</tr>				    	
 											</table>
 									  	</div>
+=======
+										  <div class="row">
+										  	<div class="col-sm-10">
+												<table class="table">						
+												<tr>
+											    	<th>MEDICAMENTO</th>
+											    	<th>FECHA DE CREACION</th>
+											    	<th>ESTADO</th>
+											    	<th>ACCIONES</th>
+										    	</tr>
+										    	<tr ng-repeat="model in medicines">									    		
+										    		<td>{{model.med}}</td>
+										    		<td>{{model.date}}</td>
+										    		<td>{{model.wordstatus}}</td>	
+										    		<td>
+										    			<button type="button" class="btn btn-warning btn-xs" ng-show="model.medstatus = 1" ng-click="ChangeMedStatus()" >
+															Suspender
+														</button>
+														<button type="button" class="btn btn-primary btn-xs" ng-show="model.medstatus = 0" ng-click="ChangeMedStatus()">
+															Activar
+														</button>
+										    	</tr>				    	
+												</table>
+											</div>
+										  </div>
+>>>>>>> 9ce9e27d215535837614faca61581cfa83e5f7ce
 										  <div class="col-sm-3 col-sm-offset-2">
 										  	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#medModal">
 												Agregar

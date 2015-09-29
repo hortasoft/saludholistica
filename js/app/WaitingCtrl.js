@@ -1,7 +1,7 @@
 SHapp.controller('WaitingCtrl', ['$http', '$scope', '$interval', '$q', function ($http, $scope, $interval, $q) {
 	$scope.priority = "0";
 	$scope.GetWaitings = function () {
-        $http.post('/saludholistica/datamethods/GetWaiting.php', {section: $scope.section}).success(function (data, status, headers, config) {
+        $http.post('datamethods/GetWaiting.php', {section: $scope.section}).success(function (data, status, headers, config) {
             $scope.Waiting = data;
         }).error(function (data, status, headers, config) {
         });
@@ -26,7 +26,7 @@ SHapp.controller('WaitingCtrl', ['$http', '$scope', '$interval', '$q', function 
 
     $scope.postPerson = function(){
     	$scope.priority = $('input[name=priority]:checked').val();
-    	$http.post('/saludholistica/datamethods/waiting.php', {name: $scope.name , phone: $scope.phone, desc: $scope.desc, priority: $scope.priority, section: $scope.section}).success(function (data, status, headers, config) {
+    	$http.post('datamethods/waiting.php', {name: $scope.name , phone: $scope.phone, desc: $scope.desc, priority: $scope.priority, section: $scope.section}).success(function (data, status, headers, config) {
             $('#addPac').modal('hide');
             $scope.GetWaitings();
         }).error(function (data, status, headers, config) {
@@ -47,7 +47,7 @@ SHapp.controller('WaitingCtrl', ['$http', '$scope', '$interval', '$q', function 
     };
 
     $scope.changePersonStatus = function(personName){
-    	$http.post('/saludholistica/datamethods/WaitingStatusChange.php', {name: personName, section: $scope.section}).success(function (data, status, headers, config) {
+    	$http.post('datamethods/WaitingStatusChange.php', {name: personName, section: $scope.section}).success(function (data, status, headers, config) {
             $scope.GetWaitings();
         }).error(function (data, status, headers, config) {
         });

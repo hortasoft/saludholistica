@@ -450,8 +450,14 @@ $hcid = $_GET["HCId"];
 										    	<tr ng-repeat="model in medicines">									    		
 										    		<td>{{model.med}}</td>
 										    		<td>{{model.date}}</td>
-										    		<td>{{model.wordstatus}}</td>									    				    		
-										    		
+										    		<td>{{model.wordstatus}}</td>	
+										    		<td>
+										    			<button type="button" class="btn btn-warning btn-xs" ng-show="model.medstatus = 1" ng-click="ChangeMedStatus()" >
+															Suspender
+														</button>
+														<button type="button" class="btn btn-primary btn-xs" ng-show="model.medstatus = 0" ng-click="ChangeMedStatus()">
+															Activar
+														</button>
 										    	</tr>				    	
 												</table>
 											</div>

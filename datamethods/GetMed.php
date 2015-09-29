@@ -12,6 +12,7 @@
 	
 	$myarray = array();
 	while($row = mysql_fetch_assoc($query)){
+		$medId=$row['Id'];
 		$medicamento=$row['medicamento'];
 		$date  = $row['date'];
 		$medstatus = $row['medstatus'];		
@@ -21,7 +22,7 @@
 		}else{
 			$wordstatus = "Activo";
 		}
-		$myarray[]=array('med'=>$medicamento, 'date' =>$date, 'medstatus' => $medstatus , "wordstatus" => $wordstatus , 'status' => $status);
+		$myarray[]=array('id' => $id, 'med'=>$medicamento, 'date' =>$date, 'medstatus' => $medstatus , "wordstatus" => $wordstatus , 'status' => $status);
 	}
 	
 	mysql_close($connection); // Connection Closed

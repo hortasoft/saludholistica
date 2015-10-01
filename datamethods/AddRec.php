@@ -7,46 +7,46 @@
 	$request = json_decode($postdata);
 	
 	$HCId=$request->HCId;
-	$Med=$request->Med;
+	$Rec=$request->Reco;
 	$hoy = date("Y-m-d H:i:s");
-	$MedStatus = 1;
+	$RecStatus = 1;
 	$status = 0;
 	
 	
 	
-	$response = mysql_query("INSERT INTO medicamentos
+	$response = mysql_query("INSERT INTO recomendaciones
 		(HCId,
-		medicamento,
+		recomendacion,
 		date,
 		lastUpdate,
-		medstatus,
+		recstatus,
 		status)
 		VALUES
 		('$HCId',
-		'$Med',
+		'$Rec',
 		'$hoy',
 		'$hoy',
-		'$MedStatus',
+		'$RecStatus',
 		'$status')"
 	);
 	
 
-	$query = mysql_query("SELECT * FROM medicamentos WHERE HCId = '$HCId'", $connection);
+	$query = mysql_query("SELECT * FROM recomendaciones WHERE HCId = '$HCId'", $connection);
 	
 	$myarray = array();
 	while($row = mysql_fetch_assoc($query)){
-		$medId=$row['id'];
-		$medicamento=$row['medicamento'];
+		$recId=$row['id'];
+		$recomendacion=$row['recomendacion'];
 		$date  = $row['date'];
 		$lastdate  = $row['lastUpdate'];
-		$medstatus = $row['medstatus'];		
+		$recstatus = $row['recstatus'];		
 		$status = $row['status'];
-		if($medstatus==0){
+		if($recstatus==0){
 			$wordstatus = "Suspendido";
 		}else{
 			$wordstatus = "Activo";
 		}
-		$myarray[]=array('id' => $medId, 'med'=>$medicamento, 'date' =>$date, 'lastdate' => $lastdate, 'medstatus' => $medstatus , "wordstatus" => $wordstatus , 'status' => $status);
+		$myarray[]=array('id' => $recId, 'rec'=>$recomendacion, 'date' =>$date, 'lastdate' => $lastdate, 'recstatus' => $recstatus , "wordstatus" => $wordstatus , 'status' => $status);
 	}
 	
 

@@ -460,7 +460,7 @@ $hcid = $_GET["HCId"];
 													<button type="button" class="btn btn-success btn-xs medstat" ng-click="UpdMedStt(model.id, 1)" ng-show="model.medstatus==0">
 														Activar
 													</button>
-													<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#medModalUpdate" data-medId="{{model.id}}" data-med="{{model.med}}">
+													<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#medModalUpdate" data-id="{{model.id}}" data-med="{{model.med}}">
 														Modificar
 													</button>
 													</td>
@@ -530,6 +530,57 @@ $hcid = $_GET["HCId"];
 								</div>
 							</div>
 						</div>
+						<!-- row Recomendaciones -->
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-1">
+								<div class="panel panel-default medpanel">
+									  <div class="panel-heading">
+									    <h3 class="panel-title">Recomendaciones</h3>
+									  </div>
+									  <div class="panel-body">
+
+									  	<div class="row">
+									  		<table class="table">						
+												<tr>
+											    	<th>DESCRIPCION</th>
+											    	<th>FECHA FORMULACION</th>
+											    	<th>FECHA ULTIMA MODIFICACION</th>
+											    	<th>ESTADO</th>
+											    	<th class="col-sm-3">ACCIONES</th>
+										    	</tr>
+										    	<tr ng-repeat="model in recdata">
+										    		<td>{{model.rec}}</td>
+										    		<td>{{model.date}}</td>	
+										    		<td>{{model.lastdate}}</td>		    		
+										    		<td>{{model.wordstatus}}</td>
+										    		<td><button type="button" class="btn btn-warning btn-xs recstat" ng-click="UpdRecStt(model.id, 0)" ng-show="model.recstatus==1">
+														Suspender
+													</button>
+													<button type="button" class="btn btn-success btn-xs recstat" ng-click="UpdRecStt(model.id, 1)" ng-show="model.recstatus==0">
+														Activar
+													</button>
+													<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#recModalUpdate" data-id="{{model.id}}" data-rec="{{model.rec}}">
+														Modificar
+													</button>
+													</td>
+										    	</tr>				    	
+											</table>
+									  	</div>
+
+										  <div class="col-sm-3 col-sm-offset-2">
+										  	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#recModal">
+												Agregar
+											</button>
+										  </div>	
+										  <div class="col-sm-3 col-sm-offset-2">
+										  	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#recModal">
+												imprimir
+											</button>
+										  </div>											
+									  </div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="row">
 							<div class="col-sm-3 col-sm-offset-2">
@@ -581,14 +632,61 @@ $hcid = $_GET["HCId"];
 	      <div class="modal-body">
 		      <div class="row fieldrow">
 			  	<div class="col-sm-11 form-group" id="">					
-					<textarea class="form-control" rows="2" id="medtxt" ng_model="med"></textarea>
+					<textarea class="form-control" rows="2" id="medtxtupt" ng-model="medtxtupt"></textarea>
 				</div>
 		      </div>
 		  </div>
 	      <div class="modal-footer">
-	      	<input type="hidden" id="medId" value="" />
+	      	<input type="hidden" id="medIdupt" value="" />
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary" ng-click="UpdMed()">Agregar</button>
+	        <button type="button" class="btn btn-primary" ng-click="UpdMed()">Actualizar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+		<!-- recmodal -->
+	<div class="modal fade" id="recModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Agregar Recomendación</h4>
+	      </div>
+	      <div class="modal-body">
+		      <div class="row fieldrow">
+			  	<div class="col-sm-11 form-group" id="">					
+					<textarea class="form-control" rows="2" id="addrectxt" ng_model="recAdded"></textarea>
+				</div>
+		      </div>
+		  </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="AddRec()">Agregar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- recmodalUpdate -->
+	<div class="modal fade" id="recModalUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Actualizar Recomendación</h4>
+	      </div>
+	      <div class="modal-body">
+		      <div class="row fieldrow">
+			  	<div class="col-sm-11 form-group" id="">					
+					<textarea class="form-control" rows="2" id="rectxtupt" ng-model="rectxtupt"></textarea>
+				</div>
+		      </div>
+		  </div>
+	      <div class="modal-footer">
+	      	<input type="hidden" id="recIdupt" value="" />
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="UpdRec()">Actualizar</button>
 	      </div>
 	    </div>
 	  </div>

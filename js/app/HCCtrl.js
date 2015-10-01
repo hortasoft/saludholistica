@@ -12,7 +12,8 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 		$scope.CreateAnalisys();
 		$scope.CreateDiag();
 		$scope.LoadMed();
-
+		$scope.LoadExa();
+		$scope.LoadRec();
 	}
 	
 	$scope.CreateMotive = function(){
@@ -382,7 +383,63 @@ SHapp.controller('HCCtrl',['$http','$scope','$interval','$q',function($http, $sc
 	}
 	
 	$scope.UpdMed = function(medid){
-		
+		$scope.medidupt = $('#medIdupt').val();
+		$http.post('datamethods/UpdateMedtxt.php',{
+			HCId : $scope.hcid,
+			MedId : $scope.medidupt,
+			medtxt : $scope.medtxtupt
+		}).success(function(data, status,headers, config) {
+			$scope.meddata = data
+			$('#medModalUpdate').modal('hide')
+		}).error(	function(data, status,headers, config) {
+		});
+	}
+	
+	
+	$scope.AddRec = function(){
+		if($scope.recAdded != null && $scope.recAdded != undefined && $scope.recAdded != ""){
+			$http.post('datamethods/AddRec.php',{
+				HCId : $scope.hcid,
+				Reco: $scope.recAdded
+			}).success(function(data, status,headers, config) {
+				$scope.recdata = data,
+				$('#recModal').modal('hide')
+			}).error(	function(data, status,headers, config) {
+			});
+		}
+	}
+	
+	$scope.LoadRec = function(){
+		$http.post('datamethods/LoadRec.php',{
+			HCId : $scope.hcid,
+		}).success(function(data, status,headers, config) {
+			$scope.recdata = data
+		}).error(	function(data, status,headers, config) {
+		});
+	}
+	
+	$scope.UpdRecStt = function(recid, tostat){
+		$http.post('datamethods/UpdateRec.php',{
+			HCId : $scope.hcid,
+			RecId : recid,
+			ToStat : tostat
+		}).success(function(data, status,headers, config) {
+			$scope.recdata = data
+		}).error(	function(data, status,headers, config) {
+		});
+	}
+	
+	$scope.UpdRec = function(recid){
+		$scope.recidupt = $('#recIdupt').val();
+		$http.post('datamethods/UpdateRectxt.php',{
+			HCId : $scope.hcid,
+			RecId : $scope.recidupt,
+			rectxt : $scope.rectxtupt
+		}).success(function(data, status,headers, config) {
+			$scope.recdata = data
+			$('#recModalUpdate').modal('hide')
+		}).error(	function(data, status,headers, config) {
+		});
 	}
 	
 	$scope.AddExa = function(){
